@@ -11,12 +11,15 @@ class Usuario(db.Model):
     personajes_favoritos = db.relationship('Favorito_people', backref='usuario', lazy=True)
 
     def __repr__(self):
-        return '<User %r>' % self.username
+        return '<Usuario %r>' % self.email
 
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
+            "is_active": self.is_active,
+            "planetas_favoritos": self.planetas_favoritos,
+            "personajes_favoritos": self.personajes_favoritos,
             # do not serialize the password, its a security breach
         }
 
@@ -40,7 +43,17 @@ class Planeta(db.Model):
 
     def serialize(self):
         return {
-                # do not serialize the password, its a security breach
+            "id": self.id,
+            "name": self.name,
+            "rotation_period": self.rotation_period,
+            "orbital_period": self.orbital_period,
+            "diameter": self.diameter,
+            "climate": self.climate,
+            "gravity": self.gravity,
+            "terrain": self.terrain,
+            "surface_water": self.surface_water,
+            "population": self.population,
+            "usuarios": self.usuarios,
         }
 
 class People(db.Model):
