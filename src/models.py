@@ -52,8 +52,7 @@ class Planeta(db.Model):
             "gravity": self.gravity,
             "terrain": self.terrain,
             "surface_water": self.surface_water,
-            "population": self.population,
-            "usuarios": self.usuarios,
+            "population": self.population
         }
 
 class People(db.Model):
